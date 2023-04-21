@@ -33,7 +33,15 @@ def scrape_updates(html_content):
 
 # Requisito 3
 def scrape_next_page_link(html_content):
-    """Seu código deve vir aqui"""
+    selector = parsel.Selector(html_content)
+    url_selector = []
+    for urlSelector in selector.css('.navigation a::attr(href)'):
+        url = urlSelector.get()
+        if url not in url_selector:
+            url_selector.append(url)
+    if len(url_selector) != 0:
+        return url_selector[-2]
+    return None
 
 
 # Requisito 4
