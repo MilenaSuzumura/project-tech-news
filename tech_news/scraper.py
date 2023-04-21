@@ -39,7 +39,7 @@ def scrape_next_page_link(html_content):
         url = urlSelector.get()
         if url not in url_selector:
             url_selector.append(url)
-    if len(url_selector) != 0:
+    if url_selector:
         return url_selector[-2]
     return None
 
